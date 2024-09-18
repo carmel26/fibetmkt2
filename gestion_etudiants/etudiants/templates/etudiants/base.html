@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestion des Étudiants</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        .card {
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .rounded-input {
+            border-radius: 0.25rem; /* Arrondi léger des coins */
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

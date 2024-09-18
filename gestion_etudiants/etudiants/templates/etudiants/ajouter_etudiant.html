@@ -1,0 +1,47 @@
+{% extends 'etudiants/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Ajouter un Étudiant</h1>
+    <div class="card">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="{{ form.prenom.id_for_label }}">Prénom</label>
+                            <input type="text" name="{{ form.prenom.name }}" id="{{ form.prenom.id_for_label }}"
+                                   class="form-control rounded-input" value="{{ form.prenom.value|default_if_none:'' }}">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="{{ form.nom.id_for_label }}">Nom</label>
+                            <input type="text" name="{{ form.nom.name }}" id="{{ form.nom.id_for_label }}"
+                                   class="form-control rounded-input" value="{{ form.nom.value|default_if_none:'' }}">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="{{ form.departement.id_for_label }}">Département</label>
+                            <select name="{{ form.departement.name }}" id="{{ form.departement.id_for_label }}"
+                                    class="form-control rounded-input">
+                                {% for choice in form.departement.field.choices %}
+                                    <option value="{{ choice.0 }}" {% if choice.0 == form.departement.value %}selected{% endif %}>
+                                        {{ choice.1 }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="bi bi-plus"></i> Ajouter
+                    </button>
+                    <a class="btn btn-secondary" href="{% url 'liste_etudiants' %}">
+                        <i class="bi bi-arrow-left"></i> Retour
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

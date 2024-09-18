@@ -1,0 +1,48 @@
+{% extends 'etudiants/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Liste des Étudiants</h1>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Prénom</th>
+                        <th>Nom</th>
+                        <th>Département</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for etudiant in etudiants %}
+                        <tr>
+                            <td>{{ etudiant.prenom }}</td>
+                            <td>{{ etudiant.nom }}</td>
+                            <td>{{ etudiant.departement }}</td>
+                            <td>
+                                <a href="{% url 'modifier_etudiant' etudiant.id %}" class="btn btn-info btn-sm">
+                                    <i class="bi bi-pencil"></i> 
+                                </a>
+                                <a href="{% url 'supprimer_etudiant' etudiant.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet étudiant ?');">
+                                    <i class="bi bi-trash"></i> 
+                                </a>
+                                <a href="{% url 'voir_etudiant' etudiant.id %}" class="btn btn-primary btn-sm">
+                                    <i class="bi bi-eye"></i> 
+                                </a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="4">Aucun étudiant trouvé.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a class="btn btn-success" href="{% url 'ajouter_etudiant' %}">
+                <i class="bi bi-plus"></i> Ajouter un Étudiant
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

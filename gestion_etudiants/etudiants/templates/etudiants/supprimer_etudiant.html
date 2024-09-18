@@ -1,0 +1,11 @@
+{% extends 'etudiants/base.html' %}
+
+{% block content %}
+<h1>Supprimer un Étudiant</h1>
+<form method="post">
+    {% csrf_token %}
+    <p>Êtes-vous sûr de vouloir supprimer {{ etudiant.prenom }} {{ etudiant.nom }} ?</p>
+    <button class="btn btn-danger" type="submit">Supprimer</button>
+</form>
+<a class="btn btn-secondary" href="{% url 'liste_etudiants' %}">Retour à la liste</a>
+{% endblock %}

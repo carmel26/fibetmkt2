@@ -1,0 +1,17 @@
+{% extends 'etudiants/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Détails de l'Étudiant</h1>
+    <div class="card">
+        <div class="card-body">
+            <p><strong>Prénom:</strong> {{ etudiant.prenom }}</p>
+            <p><strong>Nom:</strong> {{ etudiant.nom }}</p>
+            <p><strong>Département:</strong> {{ etudiant.departement }}</p>
+            <a class="btn btn-secondary" href="{% url 'liste_etudiants' %}">
+                <i class="bi bi-arrow-left"></i> Retour
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
